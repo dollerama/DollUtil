@@ -5,12 +5,8 @@
     "description": "Collection of utilities to make life easier.",
     "unity": "2020.3",
     "unityRelease": "32f1",
-    "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.0.2"
-    },
-    "author": {
-        "name": "Dolle",
-        "email": "graham.p.sullivan@gmail.com",
+    "repository": {
+        "type": "git",
         "url": "https://github.com/dollerama/DollUtil.git"
     },
     "samples": [
@@ -49,5 +45,14 @@
             "description": "SyncVar example",
             "path": "Samples~/SyncVariables"
         }
-    ]
+    ],
+    "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2",
+        "com.unity.textmeshpro": "3.0.6"
+    },
+    "author": {
+        "name": "Dolle",
+        "email": "graham.p.sullivan@gmail.com",
+        "url": "https://github.com/dollerama/DollUtil.git"
+    }
 }
