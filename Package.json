@@ -9,6 +9,49 @@
         "type": "git",
         "url": "https://github.com/dollerama/DollUtil.git"
     },
+    "files": [
+		"*.md",
+		"*.meta",
+		"*.asmdef",
+		"Samples~"
+	],
+    "samples": [
+        {
+            "displayName": "Console",
+            "description": "Console example",
+            "path": "Samples~/Console"
+        },
+        {
+            "displayName": "Google Sheets",
+            "description": "Google Sheets example",
+            "path": "Samples~/GoogleSheet"
+        },
+        {
+            "displayName": "Organizing",
+            "description": "Organizer example",
+            "path": "Samples~/Organizing"
+        },
+        {
+            "displayName": "Pool",
+            "description": "GameObject Pool example",
+            "path": "Samples~/Pool"
+        },
+        {
+            "displayName": "Save System",
+            "description": "Save State example",
+            "path": "Samples~/SaveState"
+        },
+        {
+            "displayName": "Scribble",
+            "description": "Scribble example",
+            "path": "Samples~/Scribble"
+        },
+        {
+            "displayName": "Sync Variables",
+            "description": "SyncVar example",
+            "path": "Samples~/SyncVariables"
+        }
+    ],
     "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.0.2",
         "com.unity.textmeshpro": "3.0.6"
