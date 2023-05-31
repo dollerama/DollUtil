@@ -9,6 +9,8 @@
     "com.unity.nuget.newtonsoft-json@3.0": "3.0.2"
  },
   "author": {
-    "name": "Dolle"
+    "name": "Dolle",
+    "email": "graham.p.sullivan@gmail.com",
+    "url": ""
   }
 }
