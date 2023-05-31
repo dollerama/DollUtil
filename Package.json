@@ -12,5 +12,42 @@
         "name": "Dolle",
         "email": "graham.p.sullivan@gmail.com",
         "url": ""
-    }
+    },
+    "samples": [
+        {
+            "displayName": "Console",
+            "description": "Console example",
+            "path": "Samples~/Console"
+        },
+        {
+            "displayName": "Google Sheets",
+            "description": "Google Sheets example",
+            "path": "Samples~/GoogleSheet"
+        },
+        {
+            "displayName": "Organizing",
+            "description": "Organizer example",
+            "path": "Samples~/Organizing"
+        },
+        {
+            "displayName": "Pool",
+            "description": "GameObject Pool example",
+            "path": "Samples~/Pool"
+        },
+        {
+            "displayName": "Save System",
+            "description": "Save State example",
+            "path": "Samples~/SaveState"
+        },
+        {
+            "displayName": "Scribble",
+            "description": "Scribble example",
+            "path": "Samples~/Scribble"
+        },
+        {
+            "displayName": "Sync Variables",
+            "description": "SyncVar example",
+            "path": "Samples~/SyncVariables"
+        }
+    ]
 }
