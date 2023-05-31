@@ -1,0 +1,14 @@
+{
+  "name": "com.Dolle.DollUtil",
+  "version": "1.0.0",
+  "displayName": "Dolle Utilities",
+  "description": "Collection of utilities to make life easier.",
+  "unity": "2020.3",
+  "unityRelease": "32f1",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json@3.0": "3.0.2"
+ },
+  "author": {
+    "name": "Dolle"
+  }
+}
