@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +42,7 @@ namespace DollUtil
             capacity *= 2;
         }
 
-        public GameObject Grab(Vector3 position, Quaternion rotation, float give_in = -1)
+        public GameObject Grab(Vector3 position, Quaternion rotation, float give_in)
         {
             if(contents.Count < capacity/2)
             {
@@ -55,10 +56,26 @@ namespace DollUtil
             c.transform.position = position;
             c.transform.rotation = rotation;
 
-            if(give_in > 0)
+            manager.StartCoroutine(Give_In(c, give_in));
+
+            return contents.Pop();
+        }
+
+        public GameObject Grab(Vector3 position, Quaternion rotation, Func<GameObject, bool> when)
+        {
+            if (contents.Count < capacity / 2)
             {
-                manager.StartCoroutine(Give_In(c, give_in));
+                Resize();
             }
+
+            var c = contents.Peek();
+
+            c.SetActive(true);
+            c.transform.parent = null;
+            c.transform.position = position;
+            c.transform.rotation = rotation;
+
+            manager.StartCoroutine(Give_When(c, when));
 
             return contents.Pop();
         }
@@ -68,8 +85,16 @@ namespace DollUtil
             yield return new WaitForSeconds(time);
 
             content.transform.parent = container.transform;
-            content.transform.localPosition = Vector3.zero;
-            content.transform.rotation = Quaternion.identity;
+            content.SetActive(false);
+
+            contents.Push(content);
+        }
+
+        public IEnumerator Give_When(GameObject content, Func<GameObject, bool> when)
+        {
+            yield return new WaitUntil(() => when(content));
+
+            content.transform.parent = container.transform;
             content.SetActive(false);
 
             contents.Push(content);
@@ -77,10 +102,7 @@ namespace DollUtil
 
         public void Give(GameObject content)
         {
-            
             content.transform.parent = container.transform;
-            content.transform.localPosition = Vector3.zero;
-            content.transform.rotation = Quaternion.identity;
             content.SetActive(false);
 
             contents.Push(content);
