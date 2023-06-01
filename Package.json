@@ -19,7 +19,7 @@
         {
             "displayName": "Console",
             "description": "Console example",
-            "path": "Samples/Console"
+            "path": "Samples~/Console"
         },
         {
             "displayName": "Google Sheets",
