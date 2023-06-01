@@ -17,7 +17,15 @@ namespace DollUtil
         private List<FieldInfo> thisFields = null;
         private Dictionary<SyncBehaviour, FieldInfo[]> cachedFields = new Dictionary<SyncBehaviour, FieldInfo[]>();
         private static List<SyncBehaviour> cachedSyncBehaviours = new List<SyncBehaviour>();
-        public UniqueId uId;
+        private UniqueId unique_id;
+        public UniqueId uId
+        {
+            get
+            {
+                unique_id = GetComponent<UniqueId>();
+                return unique_id;
+            }
+        }
 
         private void Sync(SyncType st)
         {
@@ -66,7 +74,6 @@ namespace DollUtil
 
         public virtual void Awake()
         {
-            uId = GetComponent<UniqueId>();
             cachedSyncBehaviours.Add(this);
 
             Sync(SyncType.OnAwake | SyncType.OnUpdate);

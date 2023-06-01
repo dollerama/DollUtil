@@ -38,10 +38,8 @@ public class PersistentObj : SyncBehaviour
     public GameState state1;
     public GameState state2;
 
-    IEnumerator Start()
+    void Start()
     {
-        yield return new WaitUntil(() => SaveState.GrabFirst.Loaded);
-
         Organizer.Grab<Button>("UI", "State1").onClick.AddListener(State_1);
         Organizer.Grab<Button>("UI", "State2").onClick.AddListener(State_2);
         Organizer.Grab<TMPro.TextMeshProUGUI>("UI", "StateText").text = $"State:{currentState.state}";

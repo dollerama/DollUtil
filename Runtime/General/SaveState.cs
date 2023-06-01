@@ -27,7 +27,7 @@ namespace DollUtil
             }
         }
 
-        private void OnEnable()
+        private void Awake()
         {
             if (loadOnStart) Load();
         }
@@ -101,13 +101,13 @@ namespace DollUtil
 
                         if (tmp != null)
                         {
-                            if(rawData.ContainsKey($"{id.uniqueId}.{f.Name}"))
-                                tmp.MapFrom(JsonUtility.FromJson(rawData[$"{id.uniqueId}.{f.Name}"], f.FieldType));
+                            //if(rawData.ContainsKey($"{id.uniqueId}.{f.Name}"))
+                            tmp.MapFrom(JsonUtility.FromJson(rawData[$"{id.uniqueId}.{f.Name}"], f.FieldType));
                         }
                         else
                         {
-                            if (rawData.ContainsKey($"{id.uniqueId}.{f.Name}"))
-                                f.SetValue(mono, JsonUtility.FromJson(rawData[$"{id.uniqueId}.{f.Name}"], f.FieldType));
+                            //if (rawData.ContainsKey($"{id.uniqueId}.{f.Name}"))
+                            f.SetValue(mono, JsonUtility.FromJson(rawData[$"{id.uniqueId}.{f.Name}"], f.FieldType));
                         }
                     }
                 }
@@ -182,18 +182,18 @@ namespace DollUtil
                 json = readtext.ReadLine();
             }
 
-            rawData = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            //rawData = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
 
-            //var runtimeAllGuids = GameObject.FindObjectsOfType<UniqueId>().ToList();
+            var runtimeAllGuids = GameObject.FindObjectsOfType<UniqueId>().ToList();
 
-            //foreach (var entry in JsonConvert.DeserializeObject<Dictionary<string, string>>(json))
-            //{
-            //    if(runtimeAllGuids.Find(g => g.uniqueId == entry.Key.Split('.')[0]) != null |
-            //       entry.Key.Split('_')[0] != gameObject.scene.name)
-            //    {
-            //        rawData.Add(entry.Key, entry.Value);
-            //    }
-            //}
+            foreach (var entry in JsonConvert.DeserializeObject<Dictionary<string, string>>(json))
+            {
+                if (runtimeAllGuids.Find(g => g.uniqueId == entry.Key.Split('.')[0]) != null |
+                   entry.Key.Split('_')[0] != gameObject.scene.name)
+                {
+                    rawData.Add(entry.Key, entry.Value);
+                }
+            }
 
             return true;
         }
