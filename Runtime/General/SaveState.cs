@@ -18,6 +18,14 @@ namespace DollUtil
         public bool LoadOnAwake = true;
         private Dictionary<string, string> rawData = new Dictionary<string, string>();
         private static SaveState cachedFind;
+        private bool is_loaded = false;
+        public bool Loaded
+        {
+            get
+            {
+                return is_loaded;
+            }
+        }
 
         private void Awake()
         {
@@ -104,6 +112,7 @@ namespace DollUtil
                     }
                 }
             }
+            is_loaded = true;
         }
 
         [ContextMenu("Delete Save")]
