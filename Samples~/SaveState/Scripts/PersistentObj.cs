@@ -38,7 +38,7 @@ public class PersistentObj : SyncBehaviour
     public GameState state1;
     public GameState state2;
 
-    IEnumator Start()
+    IEnumerator Start()
     {
         yield return new WaitUntil(() => SaveState.GrabFirst.Loaded);
 

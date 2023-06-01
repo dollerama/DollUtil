@@ -15,7 +15,7 @@ namespace DollUtil
     public class SaveState : MonoBehaviour
     {
         public string File;
-        public bool LoadOnAwake = true;
+        public bool loadOnStart = true;
         private Dictionary<string, string> rawData = new Dictionary<string, string>();
         private static SaveState cachedFind;
         private bool is_loaded = false;
@@ -27,9 +27,9 @@ namespace DollUtil
             }
         }
 
-        private void Awake()
+        private void OnEnable()
         {
-            if (LoadOnAwake) Load();
+            if (loadOnStart) Load();
         }
 
         /// <summary>
