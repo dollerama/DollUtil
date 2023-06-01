@@ -14,43 +14,81 @@ namespace DollUtil
         /// <summary>
         /// GameObjects that container holds.
         /// </summary>
+        public string Name;
         public List<GameObject> Data;
-        private static List<GameObject> OrganizerCache = new List<GameObject>();
+        private static Dictionary<string, List<GameObject>> OrganizerCache = new Dictionary<string, List<GameObject>>();
 
         private void Awake()
         {
-            OrganizerCache.AddRange(Data);
+            if (OrganizerCache.ContainsKey(Name))
+            {
+                Debug.LogError($"Organizer {Name} could not be added because it already exist");
+            }
+            else
+            {
+                OrganizerCache.Add(Name, Data);
+            }
         }
 
         /// <summary>
         /// Gets Component from Organizer.
         /// </summary>
         /// <typeparam name="T">Type of Component.</typeparam>
+        /// <param name="organizer">Organizer to pull from.</param>
         /// <param name="name">Name of Organizer Data.</param>
         /// <returns>Component from data.</returns>
-        public static T Grab<T>(string name) where T : Component
+        public static T Grab<T>(string organizer, string name) where T : Component
         {
-            var tmp = OrganizerCache.Find(g => g.name == name);
-            return tmp != null ? tmp.GetComponent<T>() : null;
+            if (OrganizerCache.ContainsKey(organizer))
+            {
+                var tmp = OrganizerCache[organizer].Find(g => g.name == name);
+                return tmp != null ? tmp.GetComponent<T>() : null;
+            }
+            else
+            {
+                Debug.LogError($"Organizer {organizer} does not exist");
+                return null;
+            }
         }
 
         /// <summary>
         /// Gets Components from Organizer.
         /// </summary>
         /// <typeparam name="T">Type of Component.</typeparam>
+        /// <param name="organizer">Organizer to pull from.</param>
         /// <param name="name">Name of Organizer Data.</param>
         /// <returns>Components from data.</returns>
-        public static T[] GrabAll<T>(string name) where T : Component
+        public static T[] GrabAll<T>(string organizer, string name) where T : Component
         {
-            var tmp = OrganizerCache.Find(g => g.name == name);
-            return tmp != null ? tmp.GetComponents<T>() : null;
+            if (OrganizerCache.ContainsKey(organizer))
+            {
+                var tmp = OrganizerCache[organizer].Find(g => g.name == name);
+                return tmp != null ? tmp.GetComponents<T>() : null;
+            }
+            else
+            {
+                Debug.LogError($"Organizer {organizer} does not exist");
+                return null;
+            }
         }
 
         /// <summary>
         /// Get GameObject from Organizer.
         /// </summary>
+        /// <param name="organizer">Organizer to pull from.</param>
         /// <param name="name">Name of of Organizer Data.</param>
         /// <returns>GameObject from data.</returns>
-        public static GameObject Grab(string name) => OrganizerCache.Find(g => g.name == name);
+        public static GameObject Grab(string organizer, string name)
+        {
+            if (OrganizerCache.ContainsKey(organizer))
+            {
+                return OrganizerCache[organizer].Find(g => g.name == name);
+            }
+            else
+            {
+                Debug.LogError($"Organizer {organizer} does not exist");
+                return null;
+            }
+        }
     }
 }

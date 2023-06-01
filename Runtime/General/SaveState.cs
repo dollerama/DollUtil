@@ -15,13 +15,13 @@ namespace DollUtil
     public class SaveState : MonoBehaviour
     {
         public string File;
-        public bool LoadOnStart = true;
+        public bool LoadOnAwake = true;
         private Dictionary<string, string> rawData = new Dictionary<string, string>();
         private static SaveState cachedFind;
 
-        private void Start()
+        private void Awake()
         {
-            if (LoadOnStart) Load();
+            if (LoadOnAwake) Load();
         }
 
         /// <summary>
@@ -93,11 +93,13 @@ namespace DollUtil
 
                         if (tmp != null)
                         {
-                            tmp.MapFrom(JsonUtility.FromJson(rawData[$"{id.uniqueId}.{f.Name}"], f.FieldType));
+                            if(rawData.ContainsKey($"{id.uniqueId}.{f.Name}"))
+                                tmp.MapFrom(JsonUtility.FromJson(rawData[$"{id.uniqueId}.{f.Name}"], f.FieldType));
                         }
                         else
                         {
-                            f.SetValue(mono, JsonUtility.FromJson(rawData[$"{id.uniqueId}.{f.Name}"], f.FieldType));
+                            if (rawData.ContainsKey($"{id.uniqueId}.{f.Name}"))
+                                f.SetValue(mono, JsonUtility.FromJson(rawData[$"{id.uniqueId}.{f.Name}"], f.FieldType));
                         }
                     }
                 }

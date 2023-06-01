@@ -13,12 +13,12 @@ public class MenuData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Organizer.Grab<TMPro.TextMeshProUGUI>("PlayText").text = play_btn;
-        Organizer.Grab<TMPro.TextMeshProUGUI>("ExitText").text = exit_btn;
-        Organizer.Grab<TMPro.TextMeshProUGUI>("Title").text = title;
+        Organizer.Grab<TMPro.TextMeshProUGUI>("UI", "PlayText").text = play_btn;
+        Organizer.Grab<TMPro.TextMeshProUGUI>("UI", "ExitText").text = exit_btn;
+        Organizer.Grab<TMPro.TextMeshProUGUI>("UI", "Title").text = title;
 
-        Organizer.Grab<Button>("Play").onClick.AddListener(Play);
-        Organizer.Grab<Button>("Exit").onClick.AddListener(Exit);
+        Organizer.Grab<Button>("UI", "Play").onClick.AddListener(Play);
+        Organizer.Grab<Button>("UI", "Exit").onClick.AddListener(Exit);
     }
 
     public void Play()

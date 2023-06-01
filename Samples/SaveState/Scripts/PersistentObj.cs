@@ -42,16 +42,16 @@ public class PersistentObj : SyncBehaviour
     {
         base.Start();
 
-        Organizer.Grab<Button>("State1").onClick.AddListener(State_1);
-        Organizer.Grab<Button>("State2").onClick.AddListener(State_2);
-        Organizer.Grab<TMPro.TextMeshProUGUI>("StateText").text = $"State:{currentState.state}";
+        Organizer.Grab<Button>("UI", "State1").onClick.AddListener(State_1);
+        Organizer.Grab<Button>("UI", "State2").onClick.AddListener(State_2);
+        Organizer.Grab<TMPro.TextMeshProUGUI>("UI", "StateText").text = $"State:{currentState.state}";
     }
 
     public override void Update()
     {
         base.Update();
 
-        var panel = Organizer.Grab<Image>("Panel");
+        var panel = Organizer.Grab<Image>("UI", "Panel");
         panel.color = Color.Lerp(panel.color, currentState.color, Time.deltaTime);
     }
 
@@ -59,7 +59,7 @@ public class PersistentObj : SyncBehaviour
     {
         if (currentState.state == state1.state) return;
         currentState = state1;
-        Organizer.Grab<TMPro.TextMeshProUGUI>("StateText").text = $"State:{currentState.state}";
+        Organizer.Grab<TMPro.TextMeshProUGUI>("UI", "StateText").text = $"State:{currentState.state}";
         SaveState.GrabFirst.Save();
     }
 
@@ -67,7 +67,7 @@ public class PersistentObj : SyncBehaviour
     {
         if (currentState.state == state2.state) return;
         currentState = state2;
-        Organizer.Grab<TMPro.TextMeshProUGUI>("StateText").text = $"State:{currentState.state}";
+        Organizer.Grab<TMPro.TextMeshProUGUI>("UI", "StateText").text = $"State:{currentState.state}";
         SaveState.GrabFirst.Save();
     }
 }
