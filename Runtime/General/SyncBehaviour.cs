@@ -22,7 +22,10 @@ namespace DollUtil
         {
             get
             {
-                unique_id = GetComponent<UniqueId>();
+                if(unique_id == null)
+                {
+                    unique_id = GetComponent<UniqueId>();
+                }
                 return unique_id;
             }
         }
