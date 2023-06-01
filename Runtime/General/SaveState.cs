@@ -177,7 +177,8 @@ namespace DollUtil
 
             foreach (var entry in JsonConvert.DeserializeObject<Dictionary<string, string>>(json))
             {
-                if(runtimeAllGuids.Find(g => g.uniqueId == entry.Key.Split('.')[0]) != null)
+                if(runtimeAllGuids.Find(g => g.uniqueId == entry.Key.Split('.')[0]) != null |
+                   entry.Key.Split('_')[0] != gameObject.scene.name)
                 {
                     rawData.Add(entry.Key, entry.Value);
                 }
