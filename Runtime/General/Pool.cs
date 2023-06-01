@@ -42,6 +42,23 @@ namespace DollUtil
             capacity *= 2;
         }
 
+        public GameObject Grab(Vector3 position, Quaternion rotation)
+        {
+            if(contents.Count < capacity/2)
+            {
+                Resize();
+            }
+
+            var c = contents.Peek();
+
+            c.SetActive(true);
+            c.transform.parent = null;
+            c.transform.position = position;
+            c.transform.rotation = rotation;
+
+            return contents.Pop();
+        }
+
         public GameObject Grab(Vector3 position, Quaternion rotation, float give_in)
         {
             if(contents.Count < capacity/2)
