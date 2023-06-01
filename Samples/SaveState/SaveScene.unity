@@ -761,7 +761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6851c7421e56346cdb9537b5f8e2ba86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueId: SaveScene_09520fb4-3f8d-4622-b4d0-d2425e1bbfb0
+  uniqueId: SaveScene_8017f82a-9f12-4a57-b66a-9ca371c4a6c4
 --- !u!4 &1353430414
 Transform:
   m_ObjectHideFlags: 0

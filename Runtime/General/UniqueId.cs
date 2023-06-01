@@ -13,7 +13,6 @@ namespace DollUtil
     [ExecuteInEditMode]
     public class UniqueId : MonoBehaviour
     {
-
         // global lookup of IDs to Components - we can esnure at edit time that no two 
         // components which are loaded at the same time have the same ID. 
         static Dictionary<string, UniqueId> allGuids = new Dictionary<string, UniqueId>();

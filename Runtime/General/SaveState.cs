@@ -173,7 +173,15 @@ namespace DollUtil
                 json = readtext.ReadLine();
             }
 
-            rawData = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            var runtimeAllGuids = GameObject.FindObjectsOfType<UniqueId>().ToList();
+
+            foreach (var entry in JsonConvert.DeserializeObject<Dictionary<string, string>>(json))
+            {
+                if(runtimeAllGuids.Find(g => g.uniqueId == entry.Key.Split('.')[0]) != null)
+                {
+                    rawData.Add(entry.Key, entry.Value);
+                }
+            }
 
             return true;
         }
