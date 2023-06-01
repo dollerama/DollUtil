@@ -742,25 +742,13 @@ MonoBehaviour:
   uId: {fileID: 0}
   currentState:
     state: 0
-    color:
-      r: 0
-      g: 0
-      b: 0
-      a: 0
+    color: {r: 0, g: 0, b: 0, a: 0}
   state1:
     state: 1
-    color:
-      r: 1
-      g: 0.74732614
-      b: 0.25943398
-      a: 1
+    color: {r: 1, g: 0.74732614, b: 0.25943398, a: 1}
   state2:
     state: 2
-    color:
-      r: 0.24056602
-      g: 0.5371866
-      b: 1
-      a: 1
+    color: {r: 0.24056602, g: 0.5371866, b: 1, a: 1}
 --- !u!114 &1353430413
 MonoBehaviour:
   m_ObjectHideFlags: 0

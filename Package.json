@@ -24,32 +24,32 @@
         {
             "displayName": "Google Sheets",
             "description": "Google Sheets example",
-            "path": "Samples/GoogleSheet"
+            "path": "Samples~/GoogleSheet"
         },
         {
             "displayName": "Organizing",
             "description": "Organizer example",
-            "path": "Samples/Organizing"
+            "path": "Samples~/Organizing"
         },
         {
             "displayName": "Pool",
             "description": "GameObject Pool example",
-            "path": "Samples/Pool"
+            "path": "Samples~/Pool"
         },
         {
             "displayName": "Save System",
             "description": "Save State example",
-            "path": "Samples/SaveState"
+            "path": "Samples~/SaveState"
         },
         {
             "displayName": "Scribble",
             "description": "Scribble example",
-            "path": "Samples/Scribble"
+            "path": "Samples~/Scribble"
         },
         {
             "displayName": "Sync Variables",
             "description": "SyncVar example",
-            "path": "Samples/SyncVariables"
+            "path": "Samples~/SyncVariables"
         }
     ],
     "dependencies": {
