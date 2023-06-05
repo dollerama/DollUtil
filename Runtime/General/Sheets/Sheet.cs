@@ -24,7 +24,7 @@ namespace DollUtil.Sheets
         {
             try
             {
-                return Rows[0].Split(',')[cell];
+                return Rows[row].Split(',')[cell];
             }
             catch (Exception)
             {
