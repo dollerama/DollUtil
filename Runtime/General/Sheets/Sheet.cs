@@ -59,6 +59,7 @@ namespace DollUtil.Sheets
 
         public void LoadData()
         {
+        	IsLoaded = false;
             string data = "";
 
             if (Download == DownloadType.InProject)
