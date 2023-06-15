@@ -30,6 +30,11 @@ namespace DollUtil
             }
         }
 
+        private void OnDestroy()
+		{
+			OrganizerCache.Remove(Name);
+		}
+
         /// <summary>
         /// Gets Component from Organizer.
         /// </summary>
