@@ -27,7 +27,6 @@ namespace DollUtil
             else
             {
                 OrganizerCache.Add(Name, Data);
-                OrganizerComponentCache.Add(Name, new Dictionary<string, Component>());
             }
         }
 
