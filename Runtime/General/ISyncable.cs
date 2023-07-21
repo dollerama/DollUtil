@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ISyncable
+namespace DollUtil
 {
-    public void MapFrom(object r);
+    public interface ISyncable
+    {
+        public void MapFrom(object r);
+    }
 }
