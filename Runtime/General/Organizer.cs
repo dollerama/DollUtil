@@ -49,7 +49,7 @@ namespace DollUtil
             {
                 var tmp = OrganizerCache[organizer].Find(g => g.name == name);
 
-                return (tmp == null) ? null : tmp.GetComponent<T>()
+                return (tmp == null) ? null : tmp.GetComponent<T>();
             }
             else
             {
