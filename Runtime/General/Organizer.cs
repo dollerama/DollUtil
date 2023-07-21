@@ -17,7 +17,6 @@ namespace DollUtil
         public string Name;
         public List<GameObject> Data;
         private static Dictionary<string, List<GameObject>> OrganizerCache = new Dictionary<string, List<GameObject>>();
-        private static Dictionary<string, Dictionary<string, Component>> OrganizerComponentCache = new Dictionary<string, Dictionary<string, Component>>();
 
         private void Awake()
         {
@@ -49,11 +48,8 @@ namespace DollUtil
             if (OrganizerCache.ContainsKey(organizer))
             {
                 var tmp = OrganizerCache[organizer].Find(g => g.name == name);
-                if (tmp == null) return null;
-                if (!OrganizerComponentCache[organizer].ContainsKey(tmp.name))
-                    OrganizerComponentCache[organizer].Add(tmp.name, tmp.GetComponent<T>());
 
-                return OrganizerComponentCache[organizer][tmp.name] as T;
+                return (tmp == null) ? null : tmp.GetComponent<T>()
             }
             else
             {
