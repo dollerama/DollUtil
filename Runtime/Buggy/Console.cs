@@ -111,28 +111,37 @@ namespace DollUtil.Buggy
             #if UNITY_EDITOR
             if (!show) return;
 
+            GUI.Box(new Rect(0, 0, Screen.width, 150), "");
+
             GUI.skin.box.fontSize = 24;
             GUI.skin.box.alignment = TextAnchor.MiddleLeft;
             GUI.skin.button.fontSize = 24;
-            GUI.skin.textField.fontSize = 24;
+            GUI.skin.textField.fontSize = 36;
 
-            scrollPos = GUI.BeginScrollView(new Rect(0, 0, 550, 150), scrollPos, new Rect(0, 0, 500, Messages.Count*50), false, true);
+            scrollPos = GUI.BeginScrollView(new Rect(0, 0, Screen.width, 150), scrollPos, new Rect(0, 0, Screen.width, Messages.Count*50), false, true);
             int i = 0;
             foreach(var m in Messages.Reverse())
             {
-                GUI.Box(new Rect(0, i * 55, 500, 50), new GUIContent(m));
+                GUI.Box(new Rect(0, i * 55, Screen.width, 50), new GUIContent(m));
                 i++;
             }
             GUI.EndScrollView();
             
-            input = GUI.TextField(new Rect(0, 195, 470, 40), input);
+            input = GUI.TextField(new Rect(0, 160, Screen.width-200, 60), input);
 
-            if (GUI.Button(new Rect(450, 160, 100, 40), new GUIContent("clear")))
+            if (GUI.Button(new Rect(Screen.width-200, 160, 100, 60), new GUIContent("clear")))
             {
                 Messages.Clear();
             }
 
-            if (GUI.Button(new Rect(480, 195, 70, 40), new GUIContent("enter")))
+            if (GUI.Button(new Rect(Screen.width - 100, 160, 100, 60), new GUIContent("enter")))
+            {
+                Execute(input);
+                input = "";
+            }
+
+            Event e = Event.current;
+            if (e.keyCode == KeyCode.Return && input != "")
             {
                 Execute(input);
                 input = "";
@@ -203,8 +212,9 @@ namespace DollUtil.Buggy
                 if (c == '(') break;
             }
 
-            parsed = cmd.Substring(0, id - 1);
             object[] argsCast = null;
+
+            parsed = cmd.Substring(0, id - 1);
 
             if (command.Length-id-2 > 0 && command[command.IndexOf('(') + 1] != ')')
             {

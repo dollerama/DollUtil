@@ -8,9 +8,11 @@ namespace DollUtil.Attributes
     public enum DependType
     {
         All,
+        Root,
         Self,
         Sibling,
-        Child
+        Child,
+        Ancestor
     }
 
     [AttributeUsage(AttributeTargets.Field)]
